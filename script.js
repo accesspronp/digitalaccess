@@ -100,7 +100,7 @@ function renderProducts(list=products){
       <div class="card-top"><div class="logo-box ${p.cls}"><img src="${p.logoImg}" alt="${p.name} logo" onerror="safeImg(this,'${fallback}')"></div><span class="mini-badge">${p.badge}</span></div>
       <h3>${p.name}</h3>
       <p>${p.plans[0].label} • ${p.desc}</p>
-      <div class="trust-line">Fresh account • Activation first • Secure payment</div>
+      <div class="trust-line">Fresh account • Secure payment • Fast delivery</div>
       <label class="plan-label">Choose plan</label>
       <select class="plan-select" id="plan-${index}" onchange="updatePlanPrice(${index})">
         ${p.plans.map((pl,i)=>`<option value="${i}">${pl.label} - Rs. ${pl.price.toLocaleString()}</option>`).join('')}
@@ -125,10 +125,55 @@ function renderOrders(){
   const list=document.getElementById('ordersList'); if(!list) return;
   const orders=JSON.parse(localStorage.getItem('danOrders') || '[]');
   if(!orders.length){ list.innerHTML='<div class="notice">No orders yet. After checkout, your order will show here automatically.</div>'; return; }
-  list.innerHTML = orders.map(o=>`<div class="order-card"><div><strong>${o.id}</strong><p>${o.items.map(i=>i.name).join(', ')}</p><small>${new Date(o.createdAt).toLocaleString()}</small></div><div><b>Rs. ${o.total.toLocaleString()}</b><span>${o.status}</span><em>${o.payment}</em></div></div>`).join('');
+  list.innerHTML = orders.map(o=>`<div class="order-card ${o.justPlaced ? 'just-placed' : ''}"><div><strong>${o.id}</strong>${o.justPlaced ? '<small class="fresh-order">Just placed</small>' : ''}<p>${o.items.map(i=>i.name).join(', ')}</p><small>${new Date(o.createdAt).toLocaleString()}</small><p class="customer-line">${o.name || ''} ${o.phone ? '• '+o.phone : ''}</p></div><div><b>Rs. ${Number(o.total).toLocaleString()}</b><span>${o.status}</span><em>${o.payment}</em></div></div>`).join('');
+  const cleaned = orders.map(o => ({...o, justPlaced:false}));
+  localStorage.setItem('danOrders', JSON.stringify(cleaned));
 }
 function trackOrder(){ renderOrders(); document.getElementById('orders').scrollIntoView({behavior:'smooth'}); }
 
 const searchInput=document.getElementById('searchInput');
 if(searchInput){ searchInput.addEventListener('input', applyFilters); }
 renderCategoryTabs(); renderProducts(); updateCartCount(); renderCart(); renderOrders();
+
+
+function revealAdminLink(){
+  try{
+    const session = JSON.parse(localStorage.getItem('danAdminSession') || 'null');
+    const link = document.getElementById('adminNavLink');
+    if(link && session && String(session.email || '').toLowerCase() === 'digtialaccessnepal@gmail.com'){
+      link.classList.remove('hidden-admin');
+      link.style.display = 'inline-flex';
+    }
+  }catch(e){}
+}
+revealAdminLink();
+
+function getUserSession(){
+  try{ return JSON.parse(localStorage.getItem('danUserSession') || 'null'); }catch(e){ return null; }
+}
+function logoutUser(){
+  localStorage.removeItem('danUserSession');
+  localStorage.removeItem('danAdminSession');
+  location.href='index.html';
+}
+function renderHomeAuthCard(){
+  const card = document.getElementById('homeAuthCard');
+  if(!card) return;
+  const user = getUserSession();
+  if(user && user.email){
+    const avatar = user.photoURL ? `<img class="home-auth-avatar" src="${user.photoURL}" alt="${user.username}">` : '<span class="home-auth-avatar empty">👤</span>';
+    card.innerHTML = `<div class="home-auth-copy"><strong>Welcome, ${user.username || 'User'}</strong><span>You are signed in. Your orders will save under ${user.email}.</span></div><div class="home-auth-actions signed">${avatar}<button class="home-google-btn outline" onclick="trackOrder()">View Orders</button><button class="home-google-btn" onclick="logoutUser()">Logout</button></div>`;
+  }
+}
+function renderUserNav(){
+  const box = document.getElementById('userNav');
+  if(!box) return;
+  const user = getUserSession();
+  if(user && user.username){
+    box.innerHTML = `<span class="username-pill">👤 ${user.username}</span><button class="logout-mini" onclick="logoutUser()">Logout</button>`;
+  } else {
+    box.innerHTML = `<a href="login.html" id="loginLink">Login</a><a href="signup.html" id="signupLink" class="signup-link">Sign Up</a>`;
+  }
+}
+renderUserNav();
+renderHomeAuthCard();

@@ -822,3 +822,160 @@ textarea{
 }
 .card-top{align-items:center !important;}
 @media(max-width:640px){.logo-box{width:118px !important;height:68px !important}.mini-badge{font-size:10px}}
+
+/* Admin panel and direct website order updates */
+.admin-panel{
+  padding:46px 7%;
+  min-height:80vh;
+  background:radial-gradient(circle at top right,rgba(183,255,57,.12),transparent 36%),#050505;
+  color:white;
+}
+.admin-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-bottom:24px;
+}
+.admin-head h1{font-size:38px;margin:12px 0 8px;}
+.admin-head p{opacity:.75;max-width:760px;}
+.admin-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.admin-stats{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(160px,1fr));
+  gap:16px;
+  margin:22px 0;
+}
+.admin-stats div{
+  background:linear-gradient(135deg,#101807,#0d0d0d);
+  border:1px solid rgba(183,255,57,.22);
+  border-radius:18px;
+  padding:20px;
+}
+.admin-stats strong{display:block;font-size:26px;color:#b7ff39;}
+.admin-stats span{opacity:.7;font-size:13px;}
+.admin-table-wrap{
+  overflow:auto;
+  border-radius:18px;
+  border:1px solid #202020;
+  background:#0b0b0b;
+}
+.admin-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:920px;
+}
+.admin-table th,.admin-table td{
+  text-align:left;
+  padding:15px;
+  border-bottom:1px solid #1d1d1d;
+  vertical-align:top;
+}
+.admin-table th{background:#101010;color:#b7ff39;font-size:13px;text-transform:uppercase;letter-spacing:.04em;}
+.admin-table small{display:block;opacity:.65;margin-top:5px;line-height:1.35;}
+.status-select{
+  padding:10px;
+  border-radius:10px;
+  background:#111;
+  color:white;
+  border:1px solid #2b2b2b;
+}
+.admin-empty{text-align:center!important;padding:32px!important;color:#aaa;}
+.just-placed{border-color:rgba(183,255,57,.55)!important;box-shadow:0 0 22px rgba(183,255,57,.12);}
+.fresh-order{display:inline-block!important;margin-left:8px!important;background:#b7ff39;color:#111!important;border-radius:20px;padding:3px 8px;font-weight:800;opacity:1!important;}
+.customer-line{font-size:13px;opacity:.72;margin-top:8px;}
+.auth-box .muted{opacity:.7;margin-top:-6px;margin-bottom:14px;}
+@media(max-width:700px){.admin-panel{padding:32px 18px}.admin-stats{grid-template-columns:1fr}.admin-head h1{font-size:28px}}
+
+
+/* Hidden admin link: visible only after admin login */
+.hidden-admin{display:none !important;}
+.admin-nav-link{color:#b7ff39;font-weight:800;}
+
+/* WhatsApp floating support button */
+.whatsapp-float svg{width:34px;height:34px;fill:white;display:block;}
+.telegram-float{bottom:94px !important;}
+
+/* Clean white Place Order button */
+.place-order-btn{
+  width:100%;
+  margin-top:18px;
+  padding:17px 24px !important;
+  border-radius:14px !important;
+  background:#fff !important;
+  color:#050505 !important;
+  border:1px solid rgba(255,255,255,.9) !important;
+  box-shadow:0 16px 34px rgba(255,255,255,.14), 0 0 0 1px rgba(0,0,0,.08) inset;
+  font-size:16px;
+  letter-spacing:.02em;
+}
+.place-order-btn:hover{transform:translateY(-1px);box-shadow:0 20px 40px rgba(255,255,255,.18);}
+
+.user-nav{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.signup-link{background:#b7ff39;color:#050505!important;padding:9px 14px;border-radius:999px;font-weight:900;box-shadow:0 8px 20px rgba(183,255,57,.18);}
+.username-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(183,255,57,.12);border:1px solid rgba(183,255,57,.35);color:#b7ff39;padding:9px 13px;border-radius:999px;font-weight:900;white-space:nowrap;}
+.logout-mini{border:1px solid rgba(255,255,255,.16);background:#111;color:#fff;border-radius:999px;padding:8px 12px;font-weight:800;cursor:pointer;}
+.logout-mini:hover{background:#fff;color:#111;}
+.ghost-btn{background:#111!important;color:#fff!important;border:1px solid rgba(255,255,255,.16)!important;margin-top:8px;}
+.auth-box input{margin-bottom:10px;}
+.success-box h3{margin:0 0 6px;}
+@media(max-width:640px){.user-nav{gap:6px}.signup-link,.username-pill,.logout-mini{padding:7px 9px;font-size:12px}.nav-right a:first-child{display:inline-flex}}
+
+/* Firebase / Google login polish */
+.google-btn{
+  width:100%;border:1px solid rgba(255,255,255,.16);background:#fff;color:#111;border-radius:14px;
+  padding:13px 16px;font-weight:900;cursor:pointer;margin:10px 0 8px;display:flex;align-items:center;justify-content:center;gap:10px;
+  box-shadow:0 12px 35px rgba(0,0,0,.18);transition:.2s ease;
+}
+.google-btn:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(0,0,0,.26)}
+.google-btn span{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#f5f5f5;color:#4285f4;font-weight:900;font-family:Arial,sans-serif}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:12px 0;color:rgba(255,255,255,.55);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+.auth-divider:before,.auth-divider:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.12)}
+.user-avatar{width:22px;height:22px;border-radius:999px;object-fit:cover;vertical-align:middle;margin-right:5px;border:1px solid rgba(255,255,255,.25)}
+
+
+/* Home screen Google sign in / sign up */
+.home-auth-card{
+  margin-top:18px;
+  max-width:650px;
+  padding:16px;
+  border-radius:22px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 20px 60px rgba(0,0,0,.22);
+  backdrop-filter:blur(16px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+.home-auth-copy{display:flex;flex-direction:column;gap:4px;min-width:210px;}
+.home-auth-copy strong{font-size:16px;color:#fff;font-weight:950;}
+.home-auth-copy span{font-size:13px;color:rgba(255,255,255,.72);line-height:1.45;}
+.home-auth-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+.home-google-btn{
+  border:0;
+  background:#fff;
+  color:#111;
+  border-radius:999px;
+  padding:11px 15px;
+  font-weight:950;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  box-shadow:0 14px 32px rgba(0,0,0,.22);
+  transition:.2s ease;
+  white-space:nowrap;
+}
+.home-google-btn:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.3);}
+.home-google-btn.outline{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18);}
+.home-google-btn img,.google-btn img{width:22px;height:22px;display:block;}
+.home-auth-avatar{width:38px;height:38px;border-radius:999px;object-fit:cover;border:2px solid rgba(255,255,255,.22);display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);}
+.google-btn span{display:none;}
+@media(max-width:760px){
+  .home-auth-card{align-items:flex-start;flex-direction:column;}
+  .home-auth-actions{justify-content:flex-start;width:100%;}
+  .home-google-btn{width:100%;justify-content:center;}
+}
