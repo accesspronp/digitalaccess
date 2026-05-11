@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Checkout - DigitalAccessNepal</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a href="index.html"><img src="logo.png" class="logo" alt="DigitalAccessNepal"></a>
+  <div class="nav-right"><a href="index.html">Home</a><a href="index.html#orders">Orders</a><a href="https://t.me/digitalproducts_12" target="_blank">Telegram</a></div>
+</header>
+
+<section class="checkout standalone-checkout">
+  <div class="order">
+    <h2>Order Checkout</h2>
+    <p class="muted">Review your order, choose payment, scan QR, then submit.</p>
+    <div id="orderItems" class="order-items"></div>
+    <hr>
+    <div class="summary"><span>Subtotal</span><span id="subtotal">Rs. 0</span></div>
+    <div class="summary"><span>Delivery</span><span>Instant / Manual Verify</span></div>
+    <div class="total"><span>Total</span><span id="total">Rs. 0</span></div>
+
+    <h3>Customer Information</h3>
+    <input id="fullName" placeholder="Full Name" required>
+    <input id="phone" placeholder="Phone Number" required>
+    <input id="email" placeholder="Email Address" type="email">
+    <input id="whatsapp" placeholder="WhatsApp Number">
+    <textarea id="note" placeholder="Account email, special request, or transaction ID"></textarea>
+
+    <h3>Choose Payment Method</h3>
+    <div class="paybtns">
+      <button id="khaltiBtn" onclick="showQR('khalti')">Khalti</button>
+      <button id="esewaBtn" onclick="showQR('esewa')">eSewa</button>
+    </div>
+
+    <button class="complete" onclick="completeOrder()">Place Order</button>
+    <button class="cartbtn" onclick="location.href='index.html#products'">Continue Shopping</button>
+    <div id="orderMessage"></div>
+  </div>
+
+  <div class="payment">
+    <h2>Payment QR</h2>
+    <p>Scan the selected QR. After payment, save your Order ID and send payment screenshot on WhatsApp.</p>
+    <div class="selected-method" id="selectedMethod">Khalti Selected</div>
+    <img src="khalti.png" class="qr" id="mainQR" alt="Payment QR">
+    <a id="downloadQR" class="download-btn" href="khalti.png" download="DigitalAccessNepal-Khalti-QR.png">Download QR</a>
+    <div class="own-note">Our WhatsApp: <strong>+977 9829136727</strong><br>Telegram: <strong>@digitalproducts_12</strong><br>Delivery starts after payment verification.</div>
+    <a class="wa" id="waLink" href="https://wa.me/9779829136727" target="_blank">Send Screenshot on WhatsApp</a>
+  </div>
+</section>
+
+<script src="buyscript.js"></script>
+</body>
+</html>

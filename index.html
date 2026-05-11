@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DigitalAccessNepal</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="topbar">
+  <a class="logo-wrap" href="index.html"><img src="logo.png" class="logo" alt="DigitalAccessNepal"></a>
+  <input class="search" id="searchInput" placeholder="Search Netflix, ChatGPT, Spotify...">
+  <div class="nav-right">
+    <a href="login.html">Login / Register</a>
+    <a href="#orders" class="track-link">Orders</a>
+    <div class="cart" onclick="openCart()">🛒 <span id="cartCount">0</span></div>
+  </div>
+</header>
+
+<nav class="menu">
+  <button class="cat-btn" onclick="scrollToProducts()">☰ All Categories</button>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="#products">Shop</a>
+    <a href="buy.html">How To Buy</a>
+    <a href="#orders">Orders</a>
+    <a href="#contact">Contact Us</a>
+    <a href="#contact">About Us</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="badge">#1 Digital Services Platform In Nepal</div>
+    <h1>All Your Digital <span>Needs in One Place</span></h1>
+    <p>Premium digital services at the best prices.<br>Instant delivery, 24/7 support, and secure payments.</p>
+    <div class="hero-buttons">
+      <button class="green-btn" onclick="scrollToProducts()">Shop Now →</button>
+      <button class="dark-btn" onclick="location.href='buy.html'">How to Buy ⦿</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="circle"></div>
+    <div class="hero-image-wrap"><img src="hero-godly.png" class="godly-img" alt="Digital services"></div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">⚡ Instant Delivery</div>
+  <div class="feature">💰 Best Prices</div>
+  <div class="feature">🔒 Secure Payment</div>
+  <div class="feature">🟢 24/7 Support</div>
+</section>
+
+<section class="products" id="products">
+  <h2>Our <span>Primary Services</span></h2>
+  <div class="category-tabs" id="categoryTabs"></div>
+  <div class="cards" id="productCards"></div>
+
+  <div class="trust-strip">
+    <div><strong>Payment accepted</strong><span>Scan QR and send screenshot on WhatsApp</span></div>
+    <img src="esewa-logo.png" alt="eSewa payment">
+    <img src="khalti-logo.png" alt="Khalti payment">
+    <img src="fonepay.png" alt="Fonepay payment">
+    <img src="bank.png" alt="Bank transfer">
+  </div>
+</section>
+
+<section class="orders-section" id="orders">
+  <div class="track-card">
+    <h2>Orders</h2>
+    <p>Your placed orders will appear here directly after checkout. No example ID needed.</p>
+    <button class="complete" onclick="trackOrder()">Refresh Orders</button>
+    <div id="ordersList" class="orders-list"></div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div><img src="logo.png" class="footer-logo" alt="DigitalAccessNepal"><p>Your trusted partner for premium digital services.</p></div>
+  <div><h4>Quick Links</h4><p>Home</p><p>Shop</p><p>How to Buy</p></div>
+  <div><h4>Customer Service</h4><p>Contact Us</p><p>Refund Policy</p><p>Orders</p></div>
+  <div><h4>Contact Us</h4><p>+977 9829136727</p><p><a href="https://t.me/digitalproducts_12" target="_blank">Telegram: @digitalproducts_12</a></p><p>support@digitalaccessnepal.com</p></div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/9779829136727" target="_blank">💬</a>
+<a class="telegram-float" href="https://t.me/digitalproducts_12" target="_blank">✈</a>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><h2>Your Cart</h2><button onclick="closeCart()" class="closebtn">✕</button></div>
+  <div id="cartItems"></div>
+  <div class="cart-total"><span>Total</span><strong id="cartTotal">Rs. 0</strong></div>
+  <button class="complete" onclick="goCheckout()">Proceed To Checkout</button>
+  <button class="cartbtn" onclick="clearCart()">Clear Cart</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
